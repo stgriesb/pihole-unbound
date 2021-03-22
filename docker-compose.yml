@@ -13,8 +13,8 @@ services:
       - '443:443/tcp'
      # - '22/tcp' # Uncomment to enable SSH
     volumes:
-      - '/volume1/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
-      - '/volume1/docker/pihole/etc-pihole:/etc/pihole'
+      - '/mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '/mount/pihole/etc-pihole:/etc/pihole'
     environment:
       TZ: 'Europe/Berlin'
       WEBPASSWORD: 'WEBPASSWORD'
