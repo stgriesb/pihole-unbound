@@ -1,1 +1,1 @@
-# pihole-ubuntu
+# pihole-unbound
