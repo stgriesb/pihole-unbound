@@ -24,7 +24,7 @@ docker create \
 -e WEBPASSWORD:password \
 -e ServerIP=192.168.178.60 \
 -e IPv6=false \
--e REV_SERVER: true \
+-e REV_SERVER: "true" \
 -e REV_SERVER_DOMAIN: "fritz.box" \
 -e REV_SERVER_TARGET: "192.168.178.1" \
 -e REV_SERVER_CIDR: "192.168.178.0/24" \
