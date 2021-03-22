@@ -1,0 +1,30 @@
+# pihole-unbound.tar.gz unter portainer importieren
+# sudo docker-compose -f /volume1/docker/pihole/docker-compose.yml up -d
+
+version: '3'
+services:
+  pihole:
+    image: pihole-unbound
+    container_name: pihole
+    network_mode: host
+    restart: always
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '67:67/udp'
+      - '80:80/tcp'
+      - '443:443/tcp'
+     # - '22/tcp' # Uncomment to enable SSH
+    volumes:
+      - '/volume1/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '/volume1/docker/pihole/etc-pihole:/etc/pihole'
+    environment:
+      TZ: 'Europe/Berlin'
+      WEBPASSWORD: 'j0x8rT4%sG'
+      ServerIP: '192.168.178.60'
+      REV_SERVER: 'true'
+      REV_SERVER_DOMAIN: 'fritz.box'
+      REV_SERVER_TARGET: '192.168.178.1'
+      REV_SERVER_CIDR: '192.168.178.0/24'
+      DNS1: 127.0.0.1#5335
+      DNS2: 127.0.0.1#5335
