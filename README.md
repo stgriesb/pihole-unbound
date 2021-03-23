@@ -22,7 +22,7 @@ sudo docker run -d --network host --name pihole-unbound --restart always \
 -v /volume1/docker/pihole/etc-unbound:/etc/unbound \
 -e "TZ=Europe/Berlin" \
 -e "WEBPASSWORD=PASSWORD" \
--e "ServerIP=xxx.xxx.xxx.xxx" \
+-e "ServerIP=0.0.0.0" \
 -e "REV_SERVER=true" \
 -e "REV_SERVER_DOMAIN=fritz.box" \
 -e "REV_SERVER_TARGET=xxx.xxx.xxx.xxx" \
