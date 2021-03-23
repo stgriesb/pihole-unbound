@@ -15,7 +15,7 @@ services:
     volumes:
       - '/mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
       - '/mount/pihole/etc-pihole:/etc/pihole'
-#      - '/volume1/docker/pihole/etc-unbound:/etc/unbound'
+#      - '/mount/unbound:/etc/unbound'
     environment:
       TZ: 'Europe/Berlin'
       WEBPASSWORD: 'WEBPASSWORD'
