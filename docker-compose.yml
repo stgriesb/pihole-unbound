@@ -1,28 +1,34 @@
 version: '3'
 services:
-  pihole:
+  pihole-unbound:
     image: pihole-unbound
     container_name: pihole-unbound
     network_mode: host
-    restart: always
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1    
+    restart: unless-stopped
     ports:
       - '53:53/tcp'
       - '53:53/udp'
       - '67:67/udp'
       - '80:80/tcp'
       - '443:443/tcp'
-   volumes:
-      - '/mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
-      - '/mount/pihole/etc-pihole:/etc/pihole'
-      - '/mount/unbound:/etc/unbound'
+    volumes:
+      - '/volume1/docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '/volume1/docker/pihole/etc-pihole:/etc/pihole'
+      - '/volume1/docker/pihole/etc-unbound:/etc/unbound'
     environment:
-      TZ: 'Europe/Berlin'
-      WEBPASSWORD: 'WEBPASSWORD'
-      ServerIP: '192.168.178.60'
-      REV_SERVER: 'true'
-      REV_SERVER_DOMAIN: 'fritz.box'
-      REV_SERVER_TARGET: '192.168.178.1'
-      REV_SERVER_CIDR: '192.168.178.0/24'
-      DNS1: 127.0.0.1#5335
-      DNS2: 127.0.0.1#5335
-      WEB_PORT: '8081'
+      TZ: ${TZ}
+      WEBPASSWORD: ${WEBPASSWORD}
+      ServerIP: ${ServerIP}
+      DNS_BOGUS_PRIV: ${DNS_BOGUS_PRIV}
+      DNS_FQDN_REQUIRED: ${DNS_FQDN_REQUIRED}
+      DNSMASQ_LISTENING: ${DNSMASQ_LISTENING}
+      REV_SERVER: ${REV_SERVER}
+      REV_SERVER_DOMAIN: ${REV_SERVER_DOMAIN}
+      REV_SERVER_TARGET: ${REV_SERVER_TARGET}
+      REV_SERVER_CIDR: ${REV_SERVER_CIDR}
+      DNS1: ${DNS1}
+      DNS2: ${DNS2}
+      WEB_PORT: ${WEB_PORT}
